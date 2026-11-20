@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: new-api-with-personal-data
+expected_outcome: |
+  GDPR practices, API practices (RFC 9457, pagination, idempotency), migrations, containerised local env, CI security, tracker conventions for Jira; profile shown with evidence; nothing written.

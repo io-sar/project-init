@@ -1,0 +1,61 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./.env.*.local)",
+      "Read(./.env.development)",
+      "Read(./.env.production)",
+      "Read(./.env.staging)",
+      "Read(./.env.test)",
+      "Read(./**/*.pem)",
+      "Read(./**/*.key)",
+      "Read(./secrets/**)",
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git push * --force*)",
+      "Bash(git push * -f*)"
+    ],
+    "ask": [
+      "Bash(git reset --hard*)",
+      "Bash(git clean *)",
+      "Bash(git branch -D *)",
+      "Bash(git push * --delete *)",
+      "Bash(gh pr merge *)",
+      "Bash(gh repo delete *)",
+      "Bash(gh repo edit *)",
+      "Bash(gh release *)",
+      "Bash(gh secret *)",
+      "Bash(gh api *)",
+      "Bash(gh issue delete *)",
+      "Bash(gh workflow run *)",
+      "Bash({{paid or slow scripts, e.g. uv run *record_sample*}})"
+    ],
+    "allow": [
+      "Bash({{test command}})",
+      "Bash({{test command}} *)",
+      "Bash({{lint command}})",
+      "Bash({{lint command}} *)",
+      "Bash({{format command}})",
+      "Bash({{format command}} *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "{{OPTIONAL, propose when the sandbox is not available: a command that reads the hook JSON from stdin and exits 2 with a short message if tool_input.command matches the regex \\.env(?!\\w|\\.example(?![\\w.]))|secrets\\.toml (plus the project's other secret file names); e.g. with Python: uv run --quiet python -c \"import json, re, sys; c = json.load(sys.stdin).get('tool_input', {}).get('command', ''); hit = re.search(r'\\.env(?!\\w|\\.example(?![\\w.]))|secrets\\.toml', c); hit and sys.stderr.write('Blocked: this command mentions a secret file.\\n'); sys.exit(2 if hit else 0)\"}}" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          { "type": "command", "command": "{{example for Python with ruff: jq -r '.tool_input.file_path' | grep '\\.py$' | xargs -r ruff format}}" }
+        ]
+      }
+    ]
+  }
+}

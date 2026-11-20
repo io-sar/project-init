@@ -1,0 +1,4 @@
+[project]
+name = "chat-helper"
+version = "0.1.0"
+dependencies = ["streamlit>=1.40", "anthropic>=0.40", "sqlalchemy>=2.0"]

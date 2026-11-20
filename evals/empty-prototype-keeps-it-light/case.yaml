@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: empty-prototype-keeps-it-light
+expected_outcome: |
+  A light setup: KISS/YAGNI chosen over full SOLID, few rule files, no GDPR, distributed-systems or container practices, nothing written to disk.

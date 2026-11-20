@@ -1,0 +1,4 @@
+schema_version: "1.1"
+name: multi-tenant-ai-platform-with-plugins
+expected_outcome: |
+  Architecture practices for tenancy (04.14), plugins (04.17), quality attributes (04.10) and event-driven design (04.15) are selected; tenancy model and style become ADRs; shared-database governance and lightweight change management are selected; AI Act practice included.

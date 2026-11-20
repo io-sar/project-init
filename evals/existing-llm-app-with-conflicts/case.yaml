@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: existing-llm-app-with-conflicts
+expected_outcome: |
+  Existing-project mode: detects Python, Streamlit and the Anthropic SDK; runs gap analysis; shows conflicts with the existing CLAUDE.md one at a time using CURRENT / PROPOSED labels with KEEP CURRENT as default; selects AI practices including async model calls (14.7) and evals (14.2); does not touch app.py.
+context:
+  scaffold_script: place-files.sh
