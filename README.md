@@ -25,12 +25,12 @@ Clone the repository into your personal Claude Code skills folder, so it is avai
 
 **Windows (PowerShell)**
 ```powershell
-git clone https://github.com/YOUR-GITHUB-USERNAME/project-init "$HOME\.claude\skills\project-init"
+git clone https://github.com/io-sar/project-init "$HOME\.claude\skills\project-init"
 ```
 
 **macOS / Linux**
 ```bash
-git clone https://github.com/YOUR-GITHUB-USERNAME/project-init ~/.claude/skills/project-init
+git clone https://github.com/io-sar/project-init ~/.claude/skills/project-init
 ```
 
 Restart Claude Code, type `/` and check that **project-init** appears.
