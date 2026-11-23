@@ -39,3 +39,7 @@ Not loaded by the skill. Ideas and lessons waiting to be reviewed; nothing here 
 - **Problem:** the profile was never saved in full, and "always asked" questions were not exempted in upgrade mode.
 - **Status:** fixed in v0.10.0 (docs/standards/profile.md written on every run; upgrade asks only missing, changed or open dimensions and confirms once).
 
+## P8 · Read planning docs (source: author, 2026-11-23)
+- **Request:** a "Planning docs" step in detection for new and existing projects: read PLAN.md, SPEC.md, ROADMAP.md, README and `docs/*.md` to pre-fill profile answers (confirmed once, marked "detected from PLAN.md") and to detect milestones in new projects too.
+- **Status:** adopted in v0.11.0, extended with: explicit statements only, quotes as evidence, conflicts between docs asked, decisions already made linked instead of new ADRs, non-goals respected.
+

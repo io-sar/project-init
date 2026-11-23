@@ -3,13 +3,13 @@ name: project-init
 description: Set up senior-level engineering standards for a software project, new or existing. Detects the stack and current conventions, asks a few questions about stage, data, growth and regulation, then writes a short CLAUDE.md, topic rules in .claude/rules/, on-demand standards docs, ADRs, a proposed .claude/settings.json and (for existing projects) a milestone-based adoption plan, chosen from a curated catalogue of 175+ best practices (architecture, APIs, data, distributed systems, multi-tenancy, security, GDPR and EU regulation, testing, CI/CD, AI/LLM, open source, Claude Code). Use this whenever the user runs /project-init, starts or bootstraps a new project or repo, asks to set up CLAUDE.md or project rules, wants best practices or engineering standards applied to a codebase, or asks to audit an existing repo against best practices, even if they don't name the skill. Not for answering a single best-practice question in conversation.
 ---
 
-# Project init · v0.10.1
+# Project init · v0.11.0
 
 Turn a catalogue of senior engineering practices into standards that fit THIS project: only what applies, with trade-offs resolved and recorded, written where Claude Code will follow them, and loaded only when they are needed.
 
 ## Ground rules, and why
 1. **Write documentation and configuration only; never change application code.** Standards are adopted gradually through reviewed changes; a setup tool that rewrites code produces huge, unreviewable diffs and breaks trust.
-2. **Always ask about data sensitivity and regulation; never infer them.** A wrong guess either misses legal obligations or buries a simple project in compliance work.
+2. **Always ask about data sensitivity and regulation; never infer them.** A wrong guess either misses legal obligations or buries a simple project in compliance work. An explicit statement in the project's own planning docs counts as an answer, shown with its quote for confirmation.
 3. **Show before you write, and get a yes.** Existing files may hold deliberate decisions; the user decides what changes.
 4. **Label every comparison CURRENT, PROPOSED and RESULT** (never "old/new"). Fixed labels remove any doubt about which side is which.
 5. **Keep what loads every session small.** Everything in CLAUDE.md and in rule files without `paths:` is loaded at the start of every session; the more there is, the less reliably each rule is followed. Put detail on demand and scope rules to folders.
@@ -34,10 +34,10 @@ Turn a catalogue of senior engineering practices into standards that fit THIS pr
 `README.md`, `LICENSE`, `TESTING.md`, `MAINTENANCE.md`, `ROADMAP.md`, `PROPOSALS.md`, `CHANGELOG.md`, `tools/` and `feedback/` are for the repository and for maintaining the skill; you do not need them during a run.
 
 ## Step 1 · Detect
-Follow `detection.md`. Record every detected value with its evidence (file path), because the user confirms the profile from that evidence in Step 3. Never open `.env` or key files. In an existing project, also collect existing conventions with file and line (Step 5 compares against them), and note any existing CLAUDE.md, AGENTS.md, `.claude/rules/` and `.claude/settings.json`.
+Follow `detection.md`, starting with its "Planning docs" step (PLAN.md, SPEC.md, ROADMAP.md, README, `docs/*.md`), which runs in new and existing projects alike: it pre-fills profile answers, finds milestones, decisions already made and non-goals. Record every detected value with its evidence (file path, and a short quote for planning docs), because the user confirms the profile from that evidence in Step 3. Never open `.env` or key files. In an existing project, also collect existing conventions with file and line (Step 5 compares against them), and note any existing CLAUDE.md, AGENTS.md, `.claude/rules/` and `.claude/settings.json`.
 
 ## Step 2 · Ask
-Follow `questions.md`: Round 1 (4 questions, always), Round 2 (up to 4, skipping what was detected), and the single follow-up only when its condition is met. Stay within the question tool's limits so no option is silently dropped.
+Follow `questions.md`: Round 1 (4 questions, skipping answers pre-filled from planning docs), Round 2 (up to 4, skipping what was detected), and the single follow-up only when its condition is met. Stay within the question tool's limits so no option is silently dropped.
 
 ## Step 3 · Confirm
 Show the confirmation screen from `questions.md`, including how many practices the profile selects. Continue only after the user confirms or corrects it; everything downstream depends on this profile.
@@ -45,7 +45,8 @@ Show the confirmation screen from `questions.md`, including how many practices t
 ## Step 4 · Select
 1. Read `practices/TAGS.md` (one line per practice: ID, title, applies tag, flags) and evaluate every tag against the profile. Then read only the selected practices in the group files; skip groups with no selected practice. Practices with `opt-in: yes` are only suggested in the summary.
 2. Resolve every practice with `alternatives:` using `guides/principle-tensions.md` in its stated order (auto tensions resolved from the profile; advisory tensions get the default and are listed for the user). A practice with `alternatives:` but no row in the tensions table is advisory: write the practice's own rule and list the alternative in the summary. Write only the chosen side; both sides would give contradictory instructions.
-3. Keep a list of practices skipped only because of `stage`: the upgrade path.
+3. Keep a list of practices skipped only because of `stage`: the upgrade path. If milestones were found (new projects too), place the upgrade path and opt-in suggestions against them, e.g. "applies from Release v1.0".
+4. Drop or flag any practice that contradicts a non-goal or constraint from the planning docs.
 
 ## Step 5 · Gap analysis (existing projects only)
 Give each selected practice one status, comparing with the conventions from Step 1:
@@ -110,5 +111,5 @@ Report, in this order:
 2. Practices selected per group, and which tier each group went to.
 3. Existing projects: enforced / adopting / planned counts and the items of the first milestone.
 4. Opt-in suggestions, advisory tensions left at their default, regulations marked "not sure", and the upgrade path. If the repository is hosted on GitHub or a similar platform, recommend server-side branch protection for the main and integration branches (a repository setting: the user decides). Note that permission deny rules are best effort (e.g. `cat .env` through the shell is not a Read call) and recommend Claude Code's sandbox for stronger isolation.
-5. Open questions (e.g. regulation "not sure") and commands left as TODO.
+5. Open questions (e.g. regulation "not sure"), disagreements between planning docs, practices that clash with stated non-goals, and commands left as TODO.
 6. Overrides, for improving the skill: one line per user override (rejected practice, KEEP CURRENT, overridden tension) as `date · ID · chosen instead · reason`, with no project names, paths or personal data. Show these lines; append them to `feedback/overrides.md` in this skill's folder only if the user says yes, the folder is writable and this is not a dry run.

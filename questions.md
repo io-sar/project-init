@@ -1,5 +1,7 @@
 # Init questions
 
+**Pre-filled answers:** a dimension pre-filled from the planning docs (see `detection.md`, "Planning docs") is not asked; it appears on the confirmation screen as `detected from <file>: "<quote>"`. This also applies to the "always asked" questions Q2 (data) and Q5 (regulation), but only when the document states the answer explicitly.
+
 **Upgrade mode:** skip every question already answered in `docs/standards/profile.md` (or in the rebuilt profile); ask only for missing, changed or open dimensions, then confirm the whole profile once. The rounds and "always asked" rules below apply to first runs.
 
 Ask with the AskUserQuestion tool in **two rounds**. The tool allows at most 4 questions per call, 2 to 4 options per question and a header of at most 12 characters; it adds an "Other" free-text option automatically. Keep within those limits so no option is silently dropped. If the tool is not available, ask the same questions as a short numbered list in one message.
@@ -105,7 +107,7 @@ PROJECT PROFILE · please confirm or correct
 |--------------|---------------------|---------------------------------|
 | Mode         | existing            | detected: 42 commits, src/      |
 | Stack        | Python · Streamlit  | detected: pyproject.toml        |
-| Stage        | MVP                 | your answer                     |
+| Stage        | MVP                 | detected from PLAN.md: "first public MVP" |
 | Data         | personal            | your answer                     |
 | Interfaces   | web-ui              | detected: streamlit dependency  |
 | Horizon      | grows               | your answer                     |

@@ -1,4 +1,4 @@
-# Practices index (v0.10.1, language-agnostic)
+# Practices index (v0.11.0, language-agnostic)
 
 Source of truth: one file per group. Fields per practice: `applies` (see `../profile.md`), `rule`, `why`; optional `note`, `opt-in`, `kind`, `alternatives` + `choose-when` (see `../guides/principle-tensions.md`).
 

@@ -1,7 +1,7 @@
 # Roadmap to v1.0
 
 Not loaded by the skill. Status of the project-init skill and what is left before v1.0.
-Last updated: 2026-11-20 (v0.10.1).
+Last updated: 2026-11-23 (v0.11.0).
 
 **v1.0 means:** proven on real projects, stable structure (changes to the profile, tag syntax or file layout after v1.0 need v2.0), and shareable.
 
@@ -19,7 +19,7 @@ Last updated: 2026-11-20 (v0.10.1).
 | 9 | First monthly review | ⬜ Scheduled | Runs 1 December 2026, 09:59 Athens time, suggestions only. Attach the repo (item 8) so it can check files too. |
 
 ## Inbox
-Open practice proposals are in `PROPOSALS.md` (open: P1 closing keywords and Gitflow, P2 bounded CI waits; adopted: P3 negative and boundary tests and P4 exploratory testing in v0.7, P5 secrets ranking and rotation in v0.8, P6 agent autonomy in v0.9, P7 upgrade re-asking fixed in v0.10).
+Open practice proposals are in `PROPOSALS.md` (open: P1 closing keywords and Gitflow, P2 bounded CI waits; adopted: P3 negative and boundary tests and P4 exploratory testing in v0.7, P5 secrets ranking and rotation in v0.8, P6 agent autonomy in v0.9, P7 upgrade re-asking fixed in v0.10, P8 planning docs in v0.11).
 
 ## Suggested path
 - v0.7: upgrade-mode findings (item 2) and the author's proofreading (item 5).

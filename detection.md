@@ -1,7 +1,21 @@
 # Detection map (language-agnostic)
 
 Detection only SUGGESTS values. Every detected value is shown on the profile confirmation screen with its evidence, and the user can correct it.
-Read only file names, manifests and config. Never read `.env` or secret files.
+Read file names, manifests and config, plus the planning docs below. Never read `.env` or secret files.
+
+## Planning docs (both new and existing projects, run first)
+Read the project's own planning documents, if present: `PLAN.md`, `SPEC.md`, `ROADMAP.md`, `README*`, and the Markdown files directly in `docs/` (`docs/*.md`; similar names such as `DESIGN.md`, `ARCHITECTURE.md` or `BRIEF.md` count too). Skip files this skill generated (`docs/standards/`, `docs/standards-adoption.md`).
+
+Use them to:
+1. **Pre-fill profile answers.** Take a value only from an explicit statement, never from a guess, and record the source with a short quote, e.g. `detected from PLAN.md: "public demo for recruiters, no accounts"`. Typical statements: stage (prototype, MVP, production, "live"), users and interfaces (web app, API, CLI), data ("stores no personal data", "user accounts", "health records"), hosting ("Streamlit Community Cloud", "AWS", "installed at customers"), growth and team, regulation named in the text (GDPR, AI Act...), open-source intent, multi-tenancy or a plugin platform.
+2. **Detect milestones,** in new projects too: headings or lists such as `M0`…`Mn`, "Milestone", "Phase", "Sprint", "Release v…", with any status words or checkboxes (done, current, next). Record each as done, current or future.
+3. **Find decisions already made** (architecture, stack, database, hosting, branching, licence, testing approach). Link to them instead of writing a new ADR (Step 6.5).
+4. **Note non-goals and constraints** ("no accounts", "no native packages", "no paid services"), so no practice proposes what the plan excludes; list such clashes in the summary.
+
+Rules:
+- If two documents disagree, do not pick one: show both quotes and ask.
+- Pre-filled answers are not asked again in Step 2; they are confirmed once on the confirmation screen, with their source.
+- Data sensitivity and regulation may be pre-filled only from an explicit statement in these documents, and stay visible for confirmation (ground rule 2).
 
 ## D0 · mode
 | Signal | Suggests |

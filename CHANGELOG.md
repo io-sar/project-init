@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.11.0 · 2026-11-23
+- Planning docs step (proposal P8), first in detection, for new and existing projects: reads PLAN.md, SPEC.md, ROADMAP.md, README and `docs/*.md` (skipping files the skill generated) to pre-fill profile answers from explicit statements, quoted as evidence ("detected from PLAN.md"), confirmed once instead of asked; to detect milestones in new projects too; to link decisions already made; and to respect non-goals. Disagreements between docs are asked, not resolved. Data and regulation can be pre-filled only from explicit statements. Test scenario O.
+
 ## 0.10.1 · 2026-11-20
 - Repository ready for GitHub: README (install by cloning into `~/.claude/skills/project-init`, update with `git pull`, usage, layout, contributing), MIT LICENSE, .gitignore for generated output.
 - Release messages now end with the `git pull` update line instead of deleting and re-extracting the folder (which would remove the clone's `.git`).
